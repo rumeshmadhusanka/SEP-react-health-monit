@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "fusioncharts": "^3.15.1-sr.1",
+    "pondjs": "^0.9.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
@@ -30,5 +32,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-fusioncharts": "^3.1.2",
+    "react-timeseries-charts": "^0.16.1",
+    "ringjs": "0.0.1"
   }
 }
