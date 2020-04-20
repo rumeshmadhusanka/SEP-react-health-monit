@@ -23,14 +23,14 @@ path {
 </style>
 
 <body>
-<input type="button" onclick="updateData()" placeholder="Click">
+<h3>CPU usage</h3>
 <!-- load the d3.js library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
 <!--<script src="https://d3js.org/d3.v5.min.js"></script>-->
 
 <script>
   const fetch_url = 'http://localhost:5000/health';
-  var data_lst = [{"cpu":3400}];
+  var data_lst = [{"cpu":3400,"date":Date.now()}];
   // Set the dimensions of the canvas / graph
   const margin = {top: 30, right: 20, bottom: 30, left: 50},
     width = 400 - margin.left - margin.right,
@@ -72,21 +72,24 @@ path {
       return response.json();
     }).then((data) => {
       data = data[0];
-      data_lst.push({"cpu":data.cpu});
-      console.log(data);
-      console.log(data_lst)
+      let a ={"cpu":data.cpu,"date":Date.now()};
+      console.log(a);
+      data_lst.push(a);
+      //console.log(data);
+      //console.log(data_lst)
     });
   }
   setInterval(()=>{
     get_data();
     updateData()
-  },2000);
+  },1000);
 
 
   //d3.json(data_lst, function (error, data) {
   data = data_lst;
     data.forEach(function (d) {
-      d.date = new Date(d.date);
+      //d.date = new Date(d.date);
+        d.date = +d.date;
       d.cpu = +d.cpu;
       console.log(d.date)
     });
@@ -123,7 +126,7 @@ path {
     //d3.json(data_lst, function (error, data) {
     data = data_lst;
       data.forEach(function (d) {
-        d.date = new Date(d.date);
+        d.date = +d.date;
         d.cpu = +d.cpu;
       });
 
